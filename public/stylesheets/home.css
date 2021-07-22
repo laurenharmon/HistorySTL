@@ -1,0 +1,20 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+.navbar {
+    height: 50px;
+}
+
+.main-page{
+    min-height: calc(100vh - 50px);
+}
+
+.main-footer {
+    height: 50px;
+}
+
+.navbar-item.has-text-white-bis:hover {
+    background-color: rgba(128, 128, 128, 0.582);
+}

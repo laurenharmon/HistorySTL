@@ -7,23 +7,20 @@ const SiteSchema = new Schema({
     name: {
         type: String
     }, 
-    type: {
-        type: String
-    },
     yearDeveloped: {
         type: Number
     },
-    // geometry: {
-    //     type: {
-    //         type: String,
-    //         enum: ["Point"],
-    //         required: true
-    //     },
-    //     coordinates: {
-    //         type: [Number],
-    //         required: true
-    //     }
-    // },
+    geometry: {
+        type: {
+            type: String,
+            enum: ["Point"],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
     history: {
         type: String
     }

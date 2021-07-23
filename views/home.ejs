@@ -27,7 +27,8 @@
                             <div class="content">
                                 <div class="table-container" style="width:320px; height:60vh; overflow:auto;">
                                     <table class="table is-hoverable">
-                                        <%- include("./partials/fakeData") %>
+                                        <th>Neighborhoods</th>
+
                                     </table>
                                 </div>
                             </div>
@@ -46,15 +47,8 @@
                         <article class="tile is-child notification has-background-danger-light">
                             <div class="content">
                                 <h2>Historic Sites</h2>
-                                <ul>
-                                      <% for(let site of sites) { %>
-                                        <li>
-                                     <h3><%= site.name %> </h3>
-                                     <p><%= site.history  %> </p>
-</li>
-                                    <% } %>
-                                </ul>
-                                </div>
+
+                                <!-- sites will go here -->
                               
                             </div>
                         </article>
@@ -64,7 +58,7 @@
     </main>
     <%- include("./partials/footer") %>
 
-
+        <script> const sites = { features: <%- JSON.stringify(sites) %> } </script>
         <script src="/scripts/downtownMap.js"></script>
 </body>
 

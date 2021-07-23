@@ -7,6 +7,9 @@ const StateSchema = new Schema({
     name: {
         type: String
     },
+    abbreviation: {
+        type: String
+    },
     cities: [
         {
             type: Schema.Types.ObjectId,

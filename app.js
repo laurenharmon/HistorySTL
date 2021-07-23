@@ -6,6 +6,7 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 
 const Site = require("./models/site");
+const Neighborhood = require("./models/neighborhood");
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +22,7 @@ app.listen("3000", () => {
 })
 
 app.get("/", async (req, res) => {
-    const sites = await Site.find({});
+   const sites = await Site.find({});
     res.render("home", {sites});
 })
 // const db = mongoose.connection;

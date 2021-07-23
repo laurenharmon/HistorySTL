@@ -3,7 +3,10 @@ const app = express();
 const path = require("path");
 const ejsEngine = require("ejs-mate");
 const methodOverride = require("method-override");
-const mapboxgl = require('mapbox-gl');
+const mongoose = require("mongoose");
+
+const Site = require("./models/site");
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -17,6 +20,20 @@ app.listen("3000", () => {
     console.log(`On Port 3000`);
 })
 
-app.get("/", (req, res) => {
-    res.render("home");
+app.get("/", async (req, res) => {
+    const sites = await Site.find({});
+    res.render("home", {sites});
 })
+// const db = mongoose.connection;
+mongoose.connect("mongodb://localhost:27017/sitesDB", {
+    useNewUrlParser: true,
+    // useCreateIndex: true,
+    useUnifiedTopology: true,
+    // useFindAndModify: false
+}).then(() => {
+    console.log("database connected");
+}).catch(err => {
+    console.log("whoops, there was an error:", err);
+})
+
+

@@ -21,15 +21,15 @@
 
             <section class="container">
                 <div class="tile is-ancestor">
-                    
+
                     <div class="tile is-parent">
                         <article class="tile is-child notification has-background-danger-light" style="height: 85vh;">
                             <div class="content">
-                                <div class="table-container" style="width:320px; height:80px; overflow:auto;">
+                                <div class="table-container" style="width:320px; height:60vh; overflow:auto;">
                                     <table class="table is-hoverable">
                                         <%- include("./partials/fakeData") %>
                                     </table>
-                                  </div>
+                                </div>
                             </div>
                         </article>
                     </div>
@@ -45,10 +45,17 @@
                     <div class="tile is-parent">
                         <article class="tile is-child notification has-background-danger-light">
                             <div class="content">
-                                <p class="title">Tall tile</p>
-                                <!-- <div class="content">
-                             Content
-                          </div> -->
+                                <h2>Historic Sites</h2>
+                                <ul>
+                                      <% for(let site of sites) { %>
+                                        <li>
+                                     <h3><%= site.name %> </h3>
+                                     <p><%= site.history  %> </p>
+</li>
+                                    <% } %>
+                                </ul>
+                                </div>
+                              
                             </div>
                         </article>
                     </div>

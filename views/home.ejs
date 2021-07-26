@@ -45,11 +45,22 @@
                     </div>
                     <div class="tile is-parent">
                         <article class="tile is-child notification has-background-danger-light">
-                            <div class="content">
+                            <div class="content facts">
                                 <h2>Historic Sites</h2>
-
-                                <!-- sites will go here -->
-                              
+                                <% for(let site of sites) {%>
+                                    <div class="card mb-4">
+                                        <header class="card-header">
+                                            <h3 class="card-header-title">
+                                                <%= site.name %>
+                                            </h3>
+                                        </header>
+                                        <div class="card-content">
+                                            <div class="content history">
+                                                <%= site.history %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
                             </div>
                         </article>
                     </div>
@@ -58,7 +69,7 @@
     </main>
     <%- include("./partials/footer") %>
 
-        <script> const sites = { features: <%- JSON.stringify(sites) %> } </script>
+        <script> const sites = { features: <%- JSON.stringify(sites) %>}</script>
         <script src="/scripts/downtownMap.js"></script>
 </body>
 

@@ -26,5 +26,12 @@ const SiteSchema = new Schema({
     }
 }, options);
 
+SiteSchema.virtual("properties.popUpInfo").get(function () {
+    const response = `<h4>${this.name}</h4>
+    <p>Developed In: ${this.yearDeveloped}</p>`;
+    const id = this._id;
+    return response;  
+});
+
 
 module.exports = mongoose.model("Site", SiteSchema);

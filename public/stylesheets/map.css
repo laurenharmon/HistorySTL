@@ -3,9 +3,10 @@
     height: 100%;
 }
 
-.marker {
-    background-image: url("https://img.icons8.com/color/30/000000/marker--v1.png");
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-  }
+
+
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    color: black;
+}

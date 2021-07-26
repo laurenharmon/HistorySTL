@@ -27,11 +27,28 @@ const SiteSchema = new Schema({
 }, options);
 
 SiteSchema.virtual("properties.popUpInfo").get(function () {
-    const response = `<h4>${this.name}</h4>
-    <p>Developed In: ${this.yearDeveloped}</p>`;
+    const response = `<h4><strong>${this.name}</strong></h4>`;
     const id = this._id;
     return response;  
 });
 
+SiteSchema.virtual("properties.clickDisplay").get(function () {
+    const response = `
+    <article class="tile is-child notification odd">
+        <div class="content facts">
+            
+    
+<h2 class="has-text-white mr-auto ml-auto">${this.name}</h2>
+    <div class="card">
+    <div class="card-content">
+      <div class="content facts">
+        ${this.history}
+        <br>
+        <p><strong>Developed In:</strong> ${this.yearDeveloped}</p>
+      </div>
+    </div>
+  </div></article></div>`;
+    return response;  
+})
 
 module.exports = mongoose.model("Site", SiteSchema);

@@ -148,22 +148,6 @@ map.on('load', function () {
         );
     });
 
-
-
-    map.on('click', 'unclustered-point', function (e) {
-        const coordinates = e.features[0].geometry.coordinates.slice();
-        const popUpText = e.features[0].properties.popUpInfo;
-
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-
-        new mapboxgl.Popup()
-            .setLngLat(coordinates)
-            .setHTML(popUpText)
-            .addTo(map);
-    });
-
     map.on('mouseenter', 'clusters', function () {
         map.getCanvas().style.cursor = 'pointer';
     });
@@ -171,10 +155,37 @@ map.on('load', function () {
         map.getCanvas().style.cursor = '';
     });
 
-    map.on('mouseenter', 'unclustered-point', function () {
-        map.getCanvas().style.cursor = 'pointer';
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
     });
+
+    map.on('mouseenter', 'unclustered-point', function (e) {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var description = e.features[0].properties.popUpInfo;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        popup.setLngLat(coordinates).setHTML(description).addTo(map);
+    });
+
     map.on('mouseleave', 'unclustered-point', function () {
         map.getCanvas().style.cursor = '';
+        popup.remove();
     });
+
+    map.on('click', 'unclustered-point', function (e) {
+        const features = e.features[0].properties.clickDisplay;
+        document.getElementById("selected").innerHTML = `${features}`;
+    })
 });

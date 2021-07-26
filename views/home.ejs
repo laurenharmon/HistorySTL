@@ -19,51 +19,43 @@
     <main class="main-page is-desktop">
         <%- include("./partials/navbar") %>
 
-            <section class="container">
+            <section class="container my-4">
                 <div class="tile is-ancestor">
 
                     <div class="tile is-parent">
-                        <article class="tile is-child notification has-background-danger-light" style="height: 85vh;">
-                            <div class="content">
-                                <div class="table-container" style="width:320px; height:60vh; overflow:auto;">
-                                    <table class="table is-hoverable">
-                                        <th>Neighborhoods</th>
-
-                                    </table>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="tile">
-                        <div class="tile">
-                            <div class="tile is-parent">
-                                <article class="tile is-child notification is-danger">
-                                    <div id='map'></div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tile is-parent">
-                        <article class="tile is-child notification has-background-danger-light">
-                            <div class="content facts">
-                                <h2>Historic Sites</h2>
-                                <% for(let site of sites) {%>
-                                    <div class="card mb-4">
-                                        <header class="card-header">
-                                            <h3 class="card-header-title">
-                                                <%= site.name %>
-                                            </h3>
-                                        </header>
-                                        <div class="card-content">
-                                            <div class="content history">
-                                                <%= site.history %>
-                                            </div>
+                        <article class="tile is-child notification odd">
+                            <div class="content has-text-white is-center">
+                                <p class="title">Search</p>
+                                <div class="block">
+                                    <div class="field is-grouped">
+                                        <div class="control is-expanded">
+                                            <input class="input is-rounded" type="text" placeholder="Search">
+                                        </div>
+                                        <div class="control">
+                                            <button class="button is-danger is-rounded"><img
+                                                    src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" /></button>
                                         </div>
                                     </div>
-                                    <% } %>
+                                    <div class="block">
+
+                                    </div>
+                                </div>
+
                             </div>
-                        </article>
                     </div>
+
+
+
+                    <div class="tile is-parent">
+                            <div class="tile is-child notification is-danger">
+                                <div id='map'></div>
+                            </div>
+                    </div>
+
+
+
+
+                    <div class="tile is-parent" id="selected"></div>
                 </div>
             </section>
     </main>

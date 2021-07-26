@@ -23,6 +23,7 @@ app.listen("3000", () => {
 
 app.get("/", async (req, res) => {
    const sites = await Site.find({});
+   const toDisplay = 
     res.render("home", {sites});
 })
 // const db = mongoose.connection;

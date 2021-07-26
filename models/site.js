@@ -6,7 +6,7 @@ const options = { toJSON: { virtuals: true } };
 const SiteSchema = new Schema({
     name: {
         type: String
-    }, 
+    },
     yearDeveloped: {
         type: Number
     },
@@ -29,7 +29,7 @@ const SiteSchema = new Schema({
 SiteSchema.virtual("properties.popUpInfo").get(function () {
     const response = `<h4><strong>${this.name}</strong></h4>`;
     const id = this._id;
-    return response;  
+    return response;
 });
 
 SiteSchema.virtual("properties.clickDisplay").get(function () {
@@ -38,8 +38,8 @@ SiteSchema.virtual("properties.clickDisplay").get(function () {
         <div class="content facts">
             
     
-<h2 class="has-text-white mr-auto ml-auto">${this.name}</h2>
-    <div class="card">
+<h2 class="has-text-white">${this.name}</h2>
+    <div class="card mr-3">
     <div class="card-content">
       <div class="content facts">
         ${this.history}
@@ -48,7 +48,9 @@ SiteSchema.virtual("properties.clickDisplay").get(function () {
       </div>
     </div>
   </div></article></div>`;
-    return response;  
-})
+    return response;
+});
+
+
 
 module.exports = mongoose.model("Site", SiteSchema);

@@ -19,13 +19,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.listen("3000", () => {
     console.log(`On Port 3000`);
-})
+});
 
 app.get("/", async (req, res) => {
-   const sites = await Site.find({});
-   const toDisplay = 
-    res.render("home", {sites});
-})
+    const sites = await Site.find({});
+    res.render("home", { sites });
+});
+
+
+
 // const db = mongoose.connection;
 mongoose.connect("mongodb://localhost:27017/sitesDB", {
     useNewUrlParser: true,

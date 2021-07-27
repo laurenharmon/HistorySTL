@@ -46,7 +46,8 @@ app.get("/", async (req, res) => {
 
 app.get("/sites", async (req, res) => {
     const neighborhoods = await Neighborhood.find({});
-    res.render("sites", { neighborhoods })
+    const tours = await SuggestedRoute.find({});
+    res.render("sites", { neighborhoods, tours })
 })
 
 app.post("/sites", async (req, res, next) => {
@@ -58,7 +59,10 @@ app.post("/sites", async (req, res, next) => {
     newSite.geometry = geoData.body.features[0].geometry;
     const neighborhood = await Neighborhood.findOne({ name: req.body.neighborhood });
     neighborhood.sites.push(newSite);
-    await downtown.save();
+    const tour = await SuggestedRoute.findOne({ name: req.body.tour });
+    tour.route.sites.push(newSite);
+    await tour.save();
+    await neighborhood.save();
     await newSite.save();
     res.redirect("/");
     // res.send(req.body);

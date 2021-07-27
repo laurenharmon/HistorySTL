@@ -33,27 +33,27 @@ const SuggestedRoute = require("../models/suggestedRoute");
 //     }
 // }
 
-// const updateSite = async () => {
-//     const site = await Site.updateOne({ _id: "610073bf605b7a2390e76155"}, {$set: { geometry: { coordinates: [-90.18945461279078, 38.62776993924334]}}});
-//     // await site.updateOne()
-//     console.log(site);    
-// }
-
-// updateSite().then(() => {
-//     mongoose.connection.close();
-// })
-
-const addRoute = async () => {
-    const downtown = await Neighborhood.findById("60fb2235e1e38f5420093fe5");
-    const site = await Site.findById("610073bf605b7a2390e76155");
-    const Architecture = new SuggestedRoute({
-        name: "Architectural Tour",
-        neighborhood: downtown.name,
-    });
-    Architecture.route.sites.push(site);    
-    await Architecture.save();
-    console.log(Architecture);
+const updateSite = async () => {
+    const site = await Site.updateOne({ name: "The Railway Exchange Building"}, {$set: { geometry: { coordinates: [-90.19051796154697,38.62885912654558]}}});
+    // await site.updateOne()
+    console.log(site);    
 }
+
+updateSite().then(() => {
+    mongoose.connection.close();
+})
+
+// const addRoute = async () => {
+//     const downtown = await Neighborhood.findById("60fb2235e1e38f5420093fe5");
+//     const site = await Site.findById("610073bf605b7a2390e76155");
+//     const Architecture = new SuggestedRoute({
+//         name: "Architectural Tour",
+//         neighborhood: downtown.name,
+//     });
+//     Architecture.route.sites.push(site);    
+//     await Architecture.save();
+//     console.log(Architecture);
+// }
 
 // const addToNeighborhood = async () => {
 //     const downtown = await Neighborhood.findById("60fb2235e1e38f5420093fe5");
@@ -68,8 +68,8 @@ const addRoute = async () => {
 //     console.log(New);
 // }
 
-addRoute().then(() => {
-    mongoose.connection.close();
-    console.log("connection closed");
-})
+// addRoute().then(() => {
+//     mongoose.connection.close();
+//     console.log("connection closed");
+// })
 

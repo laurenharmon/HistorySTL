@@ -49,6 +49,15 @@
                 <% } %> 
             </select>
           </div>
+          <div class="select mb-3">
+   
+            <select name="tour">
+              <option>Select dropdown</option>
+              <% for(let tour of tours) {%>
+                <option value="<%= tour.name  %>"><%= tour.name  %></option>
+                <% } %> 
+            </select>
+          </div>
       
             <button class="button">Create New Site</button>
         

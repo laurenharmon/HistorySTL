@@ -11,8 +11,8 @@ db.once("open", () => {
 });
 
 const Site = require("../models/site");
-// const Neighborhood = require("../models/neighborhood");
-// const { sites } = require("./seedHelpers");
+const Neighborhood = require("../models/neighborhood");
+const SuggestedRoute = require("../models/suggestedRoute");
 
 // const makeSites = async () => {
 //     const downtown = Neighborhood.find({ name: "Downtown "});
@@ -33,27 +33,43 @@ const Site = require("../models/site");
 //     }
 // }
 
-// const addSites = async () => {
+// const updateSite = async () => {
+//     const site = await Site.updateOne({ _id: "610073bf605b7a2390e76155"}, {$set: { geometry: { coordinates: [-90.18945461279078, 38.62776993924334]}}});
+//     // await site.updateOne()
+//     console.log(site);    
+// }
+
+// updateSite().then(() => {
+//     mongoose.connection.close();
+// })
+
+const addRoute = async () => {
+    const downtown = await Neighborhood.findById("60fb2235e1e38f5420093fe5");
+    const site = await Site.findById("610073bf605b7a2390e76155");
+    const Architecture = new SuggestedRoute({
+        name: "Architectural Tour",
+        neighborhood: downtown.name,
+    });
+    Architecture.route.sites.push(site);    
+    await Architecture.save();
+    console.log(Architecture);
+}
+
+// const addToNeighborhood = async () => {
 //     const downtown = await Neighborhood.findById("60fb2235e1e38f5420093fe5");
-//     const sites = await Site.find({});
-//     for (let site of sites) {
-//        downtown.sites.push(site);
-//        await downtown.save();
-//     }
+//     const site = await Site.find({ _id: "61006c048248633fc839a72a" } );
+//     const New = new SuggestedRoute({
+//         name: "Architectural Tour",
+//         neighborhood: downtown.name,
+//     });
+//     await New.save();
+//     New.route.sites.push(site);
+//     await New.save();
+//     console.log(New);
 // }
 
+addRoute().then(() => {
+    mongoose.connection.close();
+    console.log("connection closed");
+})
 
-// addSites().then(() => {
-//     mongoose.connection.close();
-//     console.log("connection closed");
-// })
-
-// const update = async() => {
-//     const id =  "60fb2f53b3e5bd2ff4ef50f5";
-//     const toUpdate = await Site.findByIdAndUpdate(id, { $set: { "geometry": { "coordinates": [-90.18753086136303, 38.62471736058001]}}});
-//     console.log(toUpdate.geometry.coordinates);
-// }
-// update().then(() => {
-//     mongoose.connection.close();
-//     console.log("connection closed");
-// })

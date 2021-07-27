@@ -1,0 +1,20 @@
+<% for(let route of routes) {%> 
+    <div class="card mb-3 mr-3">
+        <div class="card-content mb-0">
+          <div class="media">
+            <!-- <div class="media-left">
+                <figure class="image img-fluid">
+                <img src="/images/stl_flag.png" alt="St. Louis Flag" class="img-fluid">
+              </figure> 
+            </div> -->
+            <div class="media-content">
+              <p class="title is-4"><%= route.name %></p>
+              <p class="subtitle"><%= route.neighborhood %></p>
+            </div>
+            <div class="content">
+              <button class="button is-info">See This Tour</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } %> 

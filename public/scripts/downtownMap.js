@@ -20,7 +20,7 @@ map.on('load', function () {
             'type': 'Feature',
             'geometry': {
                 'type': 'Polygon',
-                // These coordinates outline Maine.
+                // These coordinates outline downtown St. Louis.
                 'coordinates': [
                     [
                         [-90.18152815993554, 38.63392972799027],
@@ -68,15 +68,11 @@ map.on('load', function () {
 
     map.addSource('sites', {
         type: 'geojson',
-        // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
-        // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
         data: sites,
         cluster: true,
-        clusterMaxZoom: 14, // Max zoom to cluster points on
-        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
+        clusterMaxZoom: 14,
+        clusterRadius: 50
     });
-
-
 
     map.addLayer({
         id: 'clusters',
@@ -93,11 +89,11 @@ map.on('load', function () {
             'circle-radius': [
                 'step',
                 ['get', 'point_count'],
-                15, //pixels
-                10, //step
+                20, //pixels
+                15, //step
                 20, //next pixels
                 25, //next step
-                25 //largest pixels
+                20 //largest pixels
             ]
         }
     });
@@ -124,7 +120,7 @@ map.on('load', function () {
         filter: ['!', ['has', 'point_count']],
         paint: {
             'circle-color': '#EF233C',
-            'circle-radius': 6,
+            'circle-radius': 7,
             'circle-stroke-width': 2,
             'circle-stroke-color': '#fff'
         }
@@ -147,6 +143,34 @@ map.on('load', function () {
             }
         );
     });
+
+    map.addSource('route', {
+        'type': 'geojson',
+        'data': {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+                'type': 'LineString',
+                'coordinates': coords
+            }
+        }
+    });
+
+    map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': 'route',
+        'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': {
+            'line-color': '#888',
+            'line-width': 4
+        }
+    });
+
+
 
     map.on('mouseenter', 'clusters', function () {
         map.getCanvas().style.cursor = 'pointer';
@@ -186,6 +210,9 @@ map.on('load', function () {
 
     map.on('click', 'unclustered-point', function (e) {
         const features = e.features[0].properties.clickDisplay;
+        map.flyTo({
+            center: e.features[0].geometry.coordinates,
+        });
         document.getElementById("selected").innerHTML = `${features}`;
     })
 });

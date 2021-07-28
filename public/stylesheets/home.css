@@ -15,7 +15,13 @@ body {
     height: 50px;
 }
 
-.navbar-item.has-text-white-bis:hover {
+a.navbar-item {
+    color: white;
+}
+
+a.navbar-item:hover {
+    color: white;
+    font-weight: 600;
     background-color: rgba(128, 128, 128, 0.582);
 }
 

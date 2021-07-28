@@ -1,72 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<% layout("layouts/boilerplate")%>
+            <section class="container my-4">
+                <form action="/sites" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label" for="name">Name: </label>
+                        <input class="form-control" type="text" name="site[name]" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="location">Address: </label>
+                        <input class="form-control" type="text" name="location" id="location" required>
+                    </div>
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+                    <div class="mb-3">
+                        <label class="form-label" for="history">History: </label>
+                        <textarea class="form-control" type="text" name="site[history]" id="description"
+                            required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="yearDeveloped">Year Developed: </label>
+                        <input type="text" class="form-control" placeholder="1991" name="site[yearDeveloped]"
+                            aria-describedby="price-label" required>
+                    </div>
+                    <div class="select mb-3">
 
-    <link rel="stylesheet" href="/stylesheets/home.css">
-    <link rel="stylesheet" href="/stylesheets/map.css">
-    <title>History</title>
-</head>
+                        <select name="neighborhood">
+                            <option>Select dropdown</option>
+                            <% for(let neighborhood of neighborhoods) {%>
+                                <option value="<%= neighborhood.name  %>">
+                                    <%= neighborhood.name %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                    <div>
+                    <% tours.forEach((tour, i)=> { %>
+                        <div class="col-6">
+                            <div class="form-check-inline">
+                                <label for="tour-<%= i %>"></label>
+                                <input id="tour" type="checkbox" value="<%= tour.name  %>" name="tours[]">
+                                <%= tour.name %>
+                            </div>
+                            
+                        </div></div>
+                        <% }) %>
 
-<body>
-    <main class="main-page is-desktop">
-        <%- include("./partials/navbar") %>
-        <section class="container my-4">
-    <form action="/sites" method="POST">
-        <div class="mb-3">
-            <label class="form-label" for="name">Name: </label>
-            <input class="form-control" type="text" name="site[name]" id="name"
-                required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="location">Address: </label>
-            <input class="form-control" type="text" name="location" id="location" required>
-        </div>
 
-        <div class="mb-3">
-            <label class="form-label" for="history">History: </label>
-            <textarea class="form-control" type="text" name="site[history]" id="description"
-                required></textarea>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="yearDeveloped">Year Developed: </label>
-            <input type="text" class="form-control" placeholder="1991" name="site[yearDeveloped]"
-                    aria-describedby="price-label" required>
-        </div>
-        <div class="select mb-3">
-   
-            <select name="neighborhood">
-              <option>Select dropdown</option>
-              <% for(let neighborhood of neighborhoods) {%>
-                <option value="<%= neighborhood.name  %>"><%= neighborhood.name  %></option>
-                <% } %> 
-            </select>
-          </div>
-          <div class="select mb-3">
-   
-            <select name="tour">
-              <option>Select dropdown</option>
-              <% for(let tour of tours) {%>
-                <option value="<%= tour.name  %>"><%= tour.name  %></option>
-                <% } %> 
-            </select>
-          </div>
-      
-            <button class="button">Create New Site</button>
-        
-    
-    
-    </form>
-</section>
+                    <button class="button">Create New Site</button>
 
-</main>
-<%- include("./partials/footer") %>
-</body>
-</html>
+
+
+                </form>
+            </section>

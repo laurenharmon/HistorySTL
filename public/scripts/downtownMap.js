@@ -156,19 +156,19 @@ map.on('load', function () {
         }
     });
 
-    // map.addLayer({
-    //     'id': 'route',
-    //     'type': 'line',
-    //     'source': 'route',
-    //     'layout': {
-    //         'line-join': 'round',
-    //         'line-cap': 'round'
-    //     },
-    //     'paint': {
-    //         'line-color': '#888',
-    //         'line-width': 4
-    //     }
-    // });
+    map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': 'route',
+        'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': {
+            'line-color': '#086fff',
+            'line-width': 4
+        }
+    });
 
 
 

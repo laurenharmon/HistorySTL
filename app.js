@@ -27,9 +27,18 @@ app.listen("3000", () => {
     console.log(`On Port 3000`);
 });
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
+    res.render("landing");
+});
+
+app.get("/tours", async (req, res, next) => {
+    const tours = await SuggestedRoute.find({});
+    res.render("select", { tours })
+})
+
+app.get("/tours/all", async (req, res) => {
     const sites = await Site.find({});
-    const routes = await SuggestedRoute.find({})
+    const tours = await SuggestedRoute.find({})
         .populate({
             path: "route",
             populate: {
@@ -38,11 +47,28 @@ app.get("/", async (req, res) => {
             }
         });
     const coords = [];
-    for (let i = 0; i < routes[0].route.sites.length; i++) {
-        coords.push(routes[0].route.sites[i].geometry.coordinates)
-    }
-    res.render("home", { sites, routes, coords });
+    res.render("tours", { sites, tours, coords });
 });
+
+app.get("/tours/:id", async (req, res) => {
+    const { id } = req.params;
+    const sites = [];
+    const tour = await SuggestedRoute.findById(id)
+        .populate({
+            path: "route",
+            populate: {
+                path: "sites",
+                populate: "geometry"
+            }
+        });
+    const coords = [];
+    for (let i = 0; i < tour.route.sites.length; i++) {
+        coords.push(tour.route.sites[i].geometry.coordinates)
+        sites.push(tour.route.sites[i])
+    }
+    res.render("tours", { sites, tour, coords });
+});
+
 
 app.get("/sites", async (req, res) => {
     const neighborhoods = await Neighborhood.find({});
@@ -59,12 +85,14 @@ app.post("/sites", async (req, res, next) => {
     newSite.geometry = geoData.body.features[0].geometry;
     const neighborhood = await Neighborhood.findOne({ name: req.body.neighborhood });
     neighborhood.sites.push(newSite);
-    const tour = await SuggestedRoute.findOne({ name: req.body.tour });
-    tour.route.sites.push(newSite);
-    await tour.save();
+    const tours = await SuggestedRoute.find({ name: req.body.tours });
+    for (let tour of tours) {
+        tour.route.sites.push(newSite);
+        await tour.save();
+    }
     await neighborhood.save();
     await newSite.save();
-    res.redirect("/");
+    res.redirect("/tours");
     // res.send(req.body);
 })
 

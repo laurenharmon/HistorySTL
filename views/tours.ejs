@@ -1,0 +1,45 @@
+<% layout("layouts/boilerplate")%>
+
+    <section class="container my-4">
+        <div class="tile is-ancestor">
+
+            <div class="tile is-parent">
+                <article class="tile is-child notification odd">
+                    <div class="content has-text-white">
+                        <div class="card">
+                            <header class="card-header">
+                                <% if(tour && tour.length) {%>
+                                    <p><%= tour.name %> </p>
+                                    <%} else {%>
+                                        <p>All</p>
+                                        <% } %> 
+                            </header>
+                        
+                        <div class="card-content">
+                            
+                            <% for(let site of sites) {%>
+                                <div class="content">
+                                <p>
+                                    <%= site.name %>
+                                </p>
+                            </div>
+                                <% } %>
+                        </div></div>
+                    </div>
+            </div>
+
+
+
+            <div class="tile is-parent">
+                <div class="tile is-child notification is-danger">
+                    <div id='map'></div>
+                </div>
+            </div>
+
+            <div class="tile is-parent" id="selected"></div>
+        </div>
+    </section>
+    <!--  -->
+    <% if(coords.length) {%> <script> const coords = <%- JSON.stringify(coords) %>;</script> <% } %> 
+    <script> const sites = { features: <%- JSON.stringify(sites) %>};</script>
+    <script src="/scripts/downtownMap.js"></script>

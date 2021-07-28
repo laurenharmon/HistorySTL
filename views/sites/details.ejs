@@ -1,0 +1,36 @@
+<% layout("layouts/boilerplate")%>
+<section class="container my-4">
+    <div class="tile is-ancestor">
+
+        <div class="tile is-parent">
+            <article class="tile is-child is-success">
+                <div class="content cards-list">
+                        <div class="card mb-3 mr-3">
+                          <div class="card-content >
+                            <div class="media">
+                              <div class="media-content">
+                                <p class="title is-4">
+                                  <%= site.name %>
+                                </p>
+                              </div>
+
+                                <div class="content">
+                                 <%= site.history %> 
+                                </div>
+                                <div class="content">
+                                    Developed: <%= site.yearDeveloped %> 
+                                </div>
+                                <div class="content">
+                                    Neighborhood: <%= neighborhood.name %> 
+                                </div>
+                              </div>
+                                <a class="button is-info button-event" value="<%= site._id %>" href="/sites/<%= site._id %>/edit">Edit This Site</a>
+                              
+                            </div>
+                          </div>
+                        </div>
+                </div>
+                </article>
+        </div>
+    </div>
+</section>

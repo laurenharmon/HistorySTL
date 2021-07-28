@@ -1,7 +1,7 @@
 
 <% layout("layouts/boilerplate")%>
             <section class="container my-4">
-                <form action="/sites" method="POST">
+                <form action="/sites/create" method="POST">
                     <div class="mb-3">
                         <label class="form-label" for="name">Name: </label>
                         <input class="form-control" type="text" name="site[name]" id="name" required>
@@ -45,7 +45,7 @@
                         <% }) %>
 
 
-                    <button class="button">Create New Site</button>
+                    <button class="button">Update Site</button>
 
 
 

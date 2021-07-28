@@ -8,19 +8,16 @@
                     <div class="content has-text-white">
                         <div class="card">
                             <header class="card-header">
-                                <% if(tour && tour.length) {%>
+                                <div class="card-header-title">
                                     <p><%= tour.name %> </p>
-                                    <%} else {%>
-                                        <p>All</p>
-                                        <% } %> 
+                                </div>
                             </header>
-                        
                         <div class="card-content">
                             
-                            <% for(let site of sites) {%>
+                            <% for(let i = 0; i < sites.length; i++) {%>
                                 <div class="content">
                                 <p>
-                                    <%= site.name %>
+                                   <%= i + 1 %>. <%= sites[i].name %>
                                 </p>
                             </div>
                                 <% } %>

@@ -1,0 +1,28 @@
+<% layout("layouts/boilerplate")%>
+<section class="container my-4">
+    <div class="tile is-ancestor">
+
+        <div class="tile is-parent" style="overflow: auto;">
+            <article class="tile is-child is-success">
+                <div class="contentcards-list">
+                    <% for(let site of sites) {%>
+                        <div class="card mb-3 mr-3">
+                          <div class="card-content mb-0">
+                            <div class="media">
+                              <div class="media-content">
+                                <p class="title is-4">
+                                  <%= site.name %>
+                                </p>
+                              </div>
+                              <div class="content">
+                                <a class="button is-info button-event" value="<%= site._id %>" href="/sites/<%= site._id %>/edit">Edit This Site</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <% } %>
+                </div>
+                </article>
+        </div>
+    </div>
+</section>

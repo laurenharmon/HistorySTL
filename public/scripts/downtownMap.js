@@ -98,20 +98,20 @@ map.on('load', function () {
         }
     });
 
-    map.addLayer({
-        id: 'cluster-count',
-        type: 'symbol',
-        source: 'sites',
-        filter: ['has', 'point_count'],
-        layout: {
-            'text-field': '{point_count_abbreviated}',
-            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-            'text-size': 14
-        },
-        paint: {
-            'text-color': 'white'
-        }
-    });
+    // map.addLayer({
+    //     id: 'cluster-count',
+    //     type: 'symbol',
+    //     source: 'sites',
+    //     filter: ['has', 'point_count'],
+    //     layout: {
+    //         'text-field': '{point_count_abbreviated}',
+    //         'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+    //         'text-size': 14
+    //     },
+    //     paint: {
+    //         'text-color': 'white'
+    //     }
+    // });
 
     map.addLayer({
         id: 'unclustered-point',

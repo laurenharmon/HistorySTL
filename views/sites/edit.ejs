@@ -1,0 +1,36 @@
+<% layout("layouts/boilerplate")%>
+    <section class="container my-4">
+        <form action="/sites/<%= site.id %>?_method=PUT" method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="name">Name: </label>
+                <input class="form-control" type="text" name="site[name]" id="name" value="<%= site.name %>" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Address: </label>
+                <input class="form-control" type="text" name="location" id="location" value="<%= site.geometry.coordinates %> "
+                    required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="history">History: </label>
+                <textarea class="form-control" type="text" name="site[history]"
+                    id="description" required><%= site.history %></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="yearDeveloped">Year Developed: </label>
+                <input type="text" class="form-control" value="<%= site.yearDeveloped %>" name="site[yearDeveloped]"
+                    aria-describedby="price-label" required>
+            </div>
+            <div class="select mb-3">
+                <select name="neighborhood">
+                    <option>Select dropdown</option>
+                    <% for(let neighborhood of neighborhoods) {%>
+                        <option value="<%= neighborhood.name  %>">
+                            <%= neighborhood.name %>
+                        </option>
+                        <% } %>
+                </select>
+            </div>
+                <button class="button">Update Site</button>
+        </form>
+    </section>

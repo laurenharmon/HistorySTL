@@ -21,6 +21,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(methodOverride("_method"));
+
 
 
 app.listen("3000", () => {
@@ -33,22 +35,22 @@ app.get("/", (req, res) => {
 
 app.get("/tours", async (req, res, next) => {
     const tours = await SuggestedRoute.find({});
-    res.render("select", { tours })
+    res.render("tours/index", { tours })
 })
 
-app.get("/tours/all", async (req, res) => {
-    const sites = await Site.find({});
-    const tours = await SuggestedRoute.find({})
-        .populate({
-            path: "route",
-            populate: {
-                path: "sites",
-                populate: "geometry"
-            }
-        });
-    const coords = [];
-    res.render("tours", { sites, tours, coords });
-});
+// app.get("/tours/all", async (req, res) => {
+//     const sites = await Site.find({});
+//     const tours = await SuggestedRoute.find({})
+//         .populate({
+//             path: "route",
+//             populate: {
+//                 path: "sites",
+//                 populate: "geometry"
+//             }
+//         });
+//     const coords = [];
+//     res.render("tours/", { sites, tours, coords });
+// });
 
 app.get("/tours/:id", async (req, res) => {
     const { id } = req.params;
@@ -66,17 +68,22 @@ app.get("/tours/:id", async (req, res) => {
         coords.push(tour.route.sites[i].geometry.coordinates)
         sites.push(tour.route.sites[i])
     }
-    res.render("tours", { sites, tour, coords });
+    res.render("tours/details", { sites, tour, coords });
 });
 
-
 app.get("/sites", async (req, res) => {
-    const neighborhoods = await Neighborhood.find({});
-    const tours = await SuggestedRoute.find({});
-    res.render("sites", { neighborhoods, tours })
+    const sites = await Site.find({});
+    res.render("sites/index", { sites });
 })
 
-app.post("/sites", async (req, res, next) => {
+
+app.get("/sites/create", async (req, res) => {
+    const neighborhoods = await Neighborhood.find({});
+    const tours = await SuggestedRoute.find({});
+    res.render("sites/create", { neighborhoods, tours })
+})
+
+app.post("/sites/create", async (req, res, next) => {
     const geoData = await geocoder.forwardGeocode({
         query: req.body.location,
         limit: 1
@@ -93,8 +100,34 @@ app.post("/sites", async (req, res, next) => {
     await neighborhood.save();
     await newSite.save();
     res.redirect("/tours");
-    // res.send(req.body);
 })
+
+app.get("/sites/:id", async (req, res) => {
+    const { id } = req.params;
+    const site = await Site.findById(id);
+    const neighborhood = await Neighborhood.findOne({ sites: { $in: [ site.id ]}});
+    res.render("sites/details", { site, neighborhood });
+})
+
+app.get("/sites/:id/edit", async (req, res, next) => {
+    const { id } = req.params;
+    const site = await Site.findById(id);
+    const neighborhoods = await Neighborhood.find({});
+    const tours = await SuggestedRoute.find({});
+    res.render("sites/edit", { site, neighborhoods, tours })
+});
+
+app.put("/sites/:id", async (req, res, next) => {
+    const { id } = req.params;
+    const site = await Site.findByIdAndUpdate(id, { ...req.body.site });
+    const geoData = await geocoder.forwardGeocode({
+        query: req.body.location,
+        limit: 1
+    }).send();
+    site.geometry = geoData.body.features[0].geometry;
+    await site.save();
+    res.redirect(`/sites/${site.id}`);
+});
 
 // const db = mongoose.connection;
 mongoose.connect("mongodb://localhost:27017/sitesDB", {

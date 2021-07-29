@@ -41,30 +41,57 @@ map.on('load', function () {
         }
     });
 
-    // Add a new layer to visualize the polygon.
-    map.addLayer({
-        'id': 'downtown',
-        'type': 'fill',
-        'source': 'downtown', // reference the data source
-        'layout': {},
-        'paint': {
-            'fill-color': '#8D99AE', // blue color fill
-            'fill-opacity': 0.3
-        }
-    });
-    // Add a black outline around the polygon.
-    map.addLayer({
-        'id': 'outline',
-        'type': 'line',
-        'source': 'downtown',
-        'layout': {},
-        'paint': {
-            'line-color': '#000',
-            'line-width': 1
+
+        // Add a new layer to visualize the polygon.
+        map.addLayer({
+            'id': 'downtown',
+            'type': 'fill',
+            'source': 'downtown', // reference the data source
+            'layout': {},
+            'paint': {
+                'fill-color': '#8D99AE', // blue color fill
+                'fill-opacity': 0.3
+            }
+        });
+        // Add a black outline around the polygon.
+        map.addLayer({
+            'id': 'outline',
+            'type': 'line',
+            'source': 'downtown',
+            'layout': {},
+            'paint': {
+                'line-color': '#000',
+                'line-width': 1
+            }
+        });
+
+    ////////////////////////////////////////////////////////////////////////////////////sites map layers and info
+
+    map.addSource('route', {
+        'type': 'geojson',
+        'data': {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+                'type': 'LineString',
+                'coordinates': coords
+            }
         }
     });
 
-    ////////////////////////////////////////////////////////////////////////////////////sites map layers and info
+    map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': 'route',
+        'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+        },
+        'paint': {
+            'line-color': '#086fff',
+            'line-width': 4
+        }
+    });
 
     map.addSource('sites', {
         type: 'geojson',
@@ -98,23 +125,31 @@ map.on('load', function () {
         }
     });
 
-    // map.addLayer({
-    //     id: 'cluster-count',
-    //     type: 'symbol',
-    //     source: 'sites',
-    //     filter: ['has', 'point_count'],
-    //     layout: {
-    //         'text-field': '{point_count_abbreviated}',
-    //         'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-    //         'text-size': 14
-    //     },
-    //     paint: {
-    //         'text-color': 'white'
-    //     }
-    // });
+    map.addLayer({
+        id: 'cluster-count',
+        type: 'symbol',
+        source: 'sites',
+        filter: ['has', 'point_count'],
+        layout: {
+            'text-field': '{point_count_abbreviated}',
+            'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
+            'text-size': 14
+        },
+        paint: {
+            'text-color': 'white'
+        }
+    });
+
+    map.on('mouseenter', 'clusters', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+    map.on('mouseleave', 'clusters', function () {
+        map.getCanvas().style.cursor = '';
+    });
+
 
     map.addLayer({
-        id: 'unclustered-point',
+        id: 'point',
         type: 'circle',
         source: 'sites',
         filter: ['!', ['has', 'point_count']],
@@ -144,47 +179,13 @@ map.on('load', function () {
         );
     });
 
-    map.addSource('route', {
-        'type': 'geojson',
-        'data': {
-            'type': 'Feature',
-            'properties': {},
-            'geometry': {
-                'type': 'LineString',
-                'coordinates': coords
-            }
-        }
-    });
-
-    map.addLayer({
-        'id': 'route',
-        'type': 'line',
-        'source': 'route',
-        'layout': {
-            'line-join': 'round',
-            'line-cap': 'round'
-        },
-        'paint': {
-            'line-color': '#086fff',
-            'line-width': 4
-        }
-    });
-
-
-
-    map.on('mouseenter', 'clusters', function () {
-        map.getCanvas().style.cursor = 'pointer';
-    });
-    map.on('mouseleave', 'clusters', function () {
-        map.getCanvas().style.cursor = '';
-    });
 
     var popup = new mapboxgl.Popup({
         closeButton: false,
         closeOnClick: false
     });
 
-    map.on('mouseenter', 'unclustered-point', function (e) {
+    map.on('mouseenter', 'point', function (e) {
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
 
@@ -203,16 +204,19 @@ map.on('load', function () {
         popup.setLngLat(coordinates).setHTML(description).addTo(map);
     });
 
-    map.on('mouseleave', 'unclustered-point', function () {
+    map.on('mouseleave', 'point', function () {
         map.getCanvas().style.cursor = '';
         popup.remove();
     });
 
-    map.on('click', 'unclustered-point', function (e) {
+    map.on('click', 'point', function (e) {
         const features = e.features[0].properties.clickDisplay;
+        const toDisplay = document.getElementById("selected");
         map.flyTo({
             center: e.features[0].geometry.coordinates,
         });
-        document.getElementById("selected").innerHTML = `${features}`;
+        toDisplay.innerHTML = `${features}`;
     })
+
+
 });

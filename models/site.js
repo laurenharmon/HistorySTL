@@ -34,19 +34,19 @@ SiteSchema.virtual("properties.popUpInfo").get(function () {
 
 SiteSchema.virtual("properties.clickDisplay").get(function () {
     const response = `
-    <article class="tile is-child notification odd">
-        <div class="content facts">
-            
-    
-<h2 class="has-text-white">${this.name}</h2>
-    <div class="card mr-3">
+    <article class="history-card">
+    <div class="content">
+    <div class="card">
+    <div class="card-header">
+    <div class="card-header-title"><p>${this.name}</p></div></div>
     <div class="card-content">
       <div class="content facts">
         ${this.history}
         <br>
         <p><strong>Developed In:</strong> ${this.yearDeveloped}</p>
       </div>
-    </div>
+      </div>
+      
   </div></article></div>`;
     return response;
 });

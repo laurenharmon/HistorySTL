@@ -29,20 +29,30 @@ a.navbar-item:hover {
     height: 83vh;
 }
 
-#map {
-    width: 100%;
-    height: 100%;
-}
 
 .odd {
     background-color: #2b2d42bd;
+}
+
+.card.sites-card {
+    max-height: 35vh;
+    overflow: auto;
 }
 
 #selected:empty {
     display: none;
 }
 
-.facts, .cards-list {
-    height: 100%;
+#selected {
+    margin-top: 1em !important;
+}
+
+.facts {
+    max-height: 30vh;
+    overflow: auto;
+}
+
+
+.cards-list {
     overflow: auto;
 }

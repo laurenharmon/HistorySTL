@@ -5,38 +5,48 @@
 
             <div class="tile is-parent">
                 <article class="tile is-child notification odd">
-                    <div class="content has-text-white">
-                        <div class="card">
+                    <div class="content">
+                        <div class="card sites-card">
                             <header class="card-header">
                                 <div class="card-header-title">
-                                    <p><%= tour.name %> </p>
+                                    <h1>
+                                        <%= tour.name %>
+                                    </h1>
                                 </div>
+                                <button class="button is-danger is-light is-pulled-right is-align-self-center">Back To
+                                    List</button>
                             </header>
-                        <div class="card-content">
-                            
-                            <% for(let i = 0; i < sites.length; i++) {%>
-                                <div class="content">
-                                <p>
-                                   <%= i + 1 %>. <%= sites[i].name %>
-                                </p>
+                            <div class="card-content">
+
+                                <% for(let i=0; i < sites.length; i++) {%>
+                                    <div class="content">
+                                        <p>
+                                            <%= i + 1 %>. <a href="/sites/<%=sites[i]._id%>">
+                                                    <%= sites[i].name %>
+                                                </a>
+
+                                        </p>
+                                    </div>
+                                    <% } %>
                             </div>
-                                <% } %>
-                        </div></div>
+                        </div>
+                        <div id="selected"></div>
                     </div>
+                </article>
             </div>
 
 
 
             <div class="tile is-parent">
                 <div class="tile is-child notification is-danger">
-                    <div id='map'></div>
+                    <div id="map"></div>
                 </div>
             </div>
-
-            <div class="tile is-parent" id="selected"></div>
         </div>
     </section>
     <!--  -->
-    <% if(coords.length) {%> <script> const coords = <%- JSON.stringify(coords) %>;</script> <% } %> 
-    <script> const sites = { features: <%- JSON.stringify(sites) %>};</script>
-    <script src="/scripts/downtownMap.js"></script>
+    <% if(coords.length) {%>
+        <script> const coords = <%- JSON.stringify(coords) %>;</script>
+        <% } %>
+            <script> const sites = { features: <%- JSON.stringify(sites) %>};</script>
+            <script src="/scripts/downtownMap.js"></script>

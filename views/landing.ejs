@@ -12,61 +12,32 @@
 
 <body>
 
-    <section class="hero is-fullheight">
-        <!-- Hero head: will stick at the top -->
-        <div class="hero-head">
-            <header class="navbar">
+    <section>
+        <div class="landing-wrapper">
+             <nav class="navbar-landing role="navigation" aria-label="main navigation">
                 <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item">
-                            <p class="brand">Your Tour</p>
-                        </a>
-                        <span class="navbar-burger burger" data-target="navbarMenu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </div>
-                    <div id="navbarMenu" class="navbar-menu">
-                        <div class="navbar-end">
-                            <a class="navbar-item is-active" href="/tours">
-                                Tours
-                            </a>
-                            <a class="navbar-item" href="http://github.com/laurenharmon">
-                                Github
-                            </a>
-                            <a class="navbar-item" href="http://linkedin.com/in/laurenaharmon">
-                                LinkedIn
-                            </a>
- 
+                            <a class="brand"><strong>Your </strong>Tour</a>
                         </div>
-                    </div>
-                </div>
-            </header>
-        </div>
+
+                            <div class="navbar-brand">
+                          
+                              <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                              </a>
+                            </div>
+                        </nav>
 
         <!-- Hero content: will be in the middle -->
-        <div class="hero-body">
-            <div class="container has-text-centered">
+            <div class="action-section">
                 <p class="title has-text-black">
-                    Self-Guided Historical Tours of St. Louis
+                    Tour More
                 </p>
-                <a href="/tours" rel="check" class="button is-danger is-large">See The Tours</a>
+                <p class="subtitle">Check</p>
             </div>
         </div>
-
-        <!-- Hero footer: will stick at the bottom -->
-        <div class="hero-foot is-hidden-mobile">
-            <nav class="tabs is-boxed is-fullwidth">
-                <div class="container">
-                    <ul>
-                        <li><a>Overview</a></li>
-                        <li><a>Developer Info</a></li>
-                        <li><a>Documentation</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+           
     </section>
     <script async type="text/javascript" src="/scripts/bulma.js"></script>
 </body>

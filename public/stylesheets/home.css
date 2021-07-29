@@ -5,7 +5,11 @@ body {
 
 section {
     height: 100vh;
+    background-color: transparent;
+}
 
+nav.landing {
+    margin: -50px;
 }
 
 .landing-wrapper {
@@ -15,13 +19,16 @@ section {
     background-position-x: center;
     background-position-y: center;
     height: inherit;
-    width: 80%;
+    width: 90%;
 }
 
 .navbar-landing {
+    position: absolute;
+    left: 8rem;
     padding-top: 6rem;
     background-color: transparent;
     font-size: 3em;
+    width: 100%;
 }
 
 .action-section {

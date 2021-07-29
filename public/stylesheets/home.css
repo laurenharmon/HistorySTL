@@ -3,6 +3,14 @@ body {
     margin: 0;
 }
 
+section.hero {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)),
+    url("/images/intricate-explorer-Gt6D-s4M-04-unsplash.jpg");
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+}
+
 .navbar {
     height: 50px;
 }
@@ -15,23 +23,38 @@ body {
     height: 50px;
 }
 
+.brand {
+    font-size: 1.5em;
+    color: black;
+}
+
+.brand:hover {
+    background-color:rgba(255, 255, 255, 0.4);
+    padding: .5em;
+    color: hsl(348, 100%, 61%);
+}
+
 a.navbar-item {
-    color: white;
+    color: black;
 }
 
 a.navbar-item:hover {
     color: white;
     font-weight: 600;
     background-color: rgba(128, 128, 128, 0.582);
+    border-radius: 25% 10%;
+}
+
+div.container ul li a:hover {
+    color: black;
+    font-weight: 600;
+    background-color: rgba(128, 128, 128, 0.582);
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
 }
 
 .tile {
-    height: 83vh;
-}
-
-
-.odd {
-    background-color: #2b2d42bd;
+    height:  80vh;
 }
 
 .card.sites-card {
@@ -48,11 +71,56 @@ a.navbar-item:hover {
 }
 
 .facts {
-    max-height: 30vh;
+    height: 30vh;
     overflow: auto;
 }
 
 
 .cards-list {
     overflow: auto;
+}
+
+@media screen and (max-width: 930px) {
+    section.container.my-4 {
+        height: 100%;
+        overflow: auto;
+    }
+
+
+    .tile.is-parent#details {
+        margin: 1em 1.5em;
+    }
+
+    .tile.is-parent#map-tile {
+        margin: 1em 1.5em;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .tile.is-ancestor {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .tile.is-parent.list {
+        margin: auto 1.5em auto !important;
+    }
+
+    .media-content {
+        overflow-x: inherit;
+    }
+
+
+    .tile.is-parent#map-tile {
+        height: 15em;
+        margin: 1em 1.5em;
+    }
+
+    .tile.is-child.map {
+        height: 15em;
+    }
+
+    .tile.is-parent#details{
+        margin: 1em 1.5em;
+    }
 }

@@ -8,3 +8,8 @@
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     color: black;
 }
+
+
+@media screen and (max-width: 768px) {
+
+}

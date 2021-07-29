@@ -3,7 +3,13 @@
     <section class="container my-4">
         <div class="tile is-ancestor">
 
-            <div class="tile is-parent">
+            <div class="tile is-parent" id="map-tile">
+                <div class="tile is-child notification map">
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <div class="tile is-parent" id="details">
                 <article class="tile is-child notification odd">
                     <div class="content">
                         <div class="card sites-card">
@@ -13,8 +19,8 @@
                                         <%= tour.name %>
                                     </h1>
                                 </div>
-                                <button class="button is-danger is-light is-pulled-right is-align-self-center">Back To
-                                    List</button>
+                                <a href="/tours" class="button is-pulled-right is-align-self-center mr-2">Back To
+                                    Tours</a>
                             </header>
                             <div class="card-content">
 
@@ -35,13 +41,6 @@
                 </article>
             </div>
 
-
-
-            <div class="tile is-parent">
-                <div class="tile is-child notification is-danger">
-                    <div id="map"></div>
-                </div>
-            </div>
         </div>
     </section>
     <!--  -->

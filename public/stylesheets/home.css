@@ -19,13 +19,13 @@ nav.landing {
     background-position-x: center;
     background-position-y: center;
     height: inherit;
-    width: 90%;
+    width: 85%;
 }
 
 .navbar-landing {
-    position: absolute;
-    left: 8rem;
-    padding-top: 6rem;
+    position: absolute ;
+    left: 8rem ;
+    padding-top: 6rem ;
     background-color: transparent;
     font-size: 3em;
     width: 100%;

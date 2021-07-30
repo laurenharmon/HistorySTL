@@ -1,0 +1,105 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+section {
+    height: 100vh;
+    background-color: transparent;
+}
+
+header.header {
+    height: 100vh;
+    width: 15%;
+    position: fixed;
+    right: 0;
+    z-index: 100;
+}
+
+.show-hide {
+    z-index: 1;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    transition-property: height;
+    transition-duration: 0.75s;
+}
+
+.nav-body {
+    transform: translateX(100%);
+    transition-duration: 2s;
+}
+
+.header-trigger {
+    text-align: center;
+    height: 100%;
+    padding: 6rem 3rem 4rem;
+}
+
+.nav-trigger  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15vh;
+    position: relative;
+}
+
+.menu-button {
+    font-size: 1.5rem;
+    line-height: 2;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    padding: 3em 0;
+    background-color: transparent;
+    appearance: none;
+    border: 0;
+    box-shadow: none;
+}
+
+.dots {
+    line-height: 1;
+    position: relative;
+    pointer-events: none;
+    display: block;
+}
+
+.menu-dots {
+    display: inline-block;
+    background-color: black;
+    width: 5px;
+    height: 5px;
+    border-radius: 3px;
+}
+
+nav.landing {
+    margin: -50px;
+}
+
+
+.landing-wrapper {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1)),
+    url("/images/arch-picture.jpg");
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    height: inherit;
+    width: 85%;
+}
+
+.navbar-landing {
+    position: absolute ;
+    left: 8rem ;
+    padding-top: 6rem ;
+    background-color: transparent;
+    font-size: 3em;
+    width: 100%;
+}
+
+.action-section {
+    position: absolute;
+    width: 100%;
+    bottom: 8rem;
+    left: 8rem;
+}

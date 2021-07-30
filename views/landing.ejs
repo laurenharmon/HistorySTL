@@ -6,49 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="/stylesheets/home.css">
+    <link rel="stylesheet" href="/stylesheets/landing.css">
     <title>Your Tour</title>
 </head>
 
 <body>
+    <script src="/scripts/nav.js"></script>
     <section>
-       
-        <div class="landing-wrapper">
-            <div class="navbar-landing">
-                <a class="brand"><strong>Your </strong>Tour</a>
-                <div class="navbar-brand">
-                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="landingNav">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                      </a>
+       <header role="banner" class="header js-nav">
+           <div class="header-trigger" id="sidebar">
+               <div class="nav-trigger  show-hide">
+                   
+                       <button class="menu-button">
+                           <div class="menu-button-text">
+                               MENU
+                           </div>
+                           <div class="dots">
+                               <span class="menu-dots"></span>
+                               <span class="menu-dots"></span>
+                               <span class="menu-dots"></span>
+                           </div>
+                       </button>
+                   </div>
+                   <div class="header-body js-nav-target">
+                    <div class="nav-body" id="nav-body">
+                       <div class="nav-body-logo">
+                           <a href="">YOUR TOUR</a>
+                       </div>
+                        <nav role="navigation">
+                            <ul class="primary-nav">
+                                <li class="nav-item">ONE</li>
+                                <li class="nav-item">TWO</li>
+                                <li class="nav-item">THREE</li>
+                                <li class="nav-item">FOUR</li>
+                                <li class="nav-item">FIVE</li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-                <nav class="landing is-pulled-right">
-                    <div id="landingNav" class="navbar-menu">
-                        <div>
-                            <a class="navbar-item" href="/">
-                                Home
-                            </a>
-                            <a class="navbar-item" href="/sites/create">
-                                Add Site
-                            </a>
-                            <a class="navbar-item" href="/sites">
-                                All Sites
-                            </a>
-                            <a class="navbar-item" href="http://github.com/laurenharmon">
-                                Github
-                            </a>
-                            <a class="navbar-item" href="http://linkedin.com/in/laurenaharmon">
-                                LinkedIn
-                            </a>
-                        </div>
-                    </div>
-                </nav>
+               </div>
+            </div>
+       </header>
+        <div class="landing-wrapper">
+            <div class="navbar-landing">
+                <div class="brand">
+                    <h1 class="has-text-white"><strong class="has-text-white">Your </strong>Tour</h1>
+               
+            </div>
             </div>
 
             <div class="action-section">
-                <p class="title has-text-black">
+                <p class="title has-text-white">
                     Tour More
                 </p>
             </div>

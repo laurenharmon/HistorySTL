@@ -49,8 +49,8 @@ map.on('load', function () {
             'source': 'downtown', // reference the data source
             'layout': {},
             'paint': {
-                'fill-color': '#8D99AE', // blue color fill
-                'fill-opacity': 0.3
+                'fill-color': '#FFFF00', // yellow color fill
+                'fill-opacity': 0.15
             }
         });
         // Add a black outline around the polygon.

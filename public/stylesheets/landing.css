@@ -17,7 +17,7 @@ header.header {
     right: 0;
     z-index: 100;
     transition-property: width;
-    transition-duration: 0.15s;
+    transition-duration: 0.25s;
 }
 
 header.header:hover {
@@ -48,7 +48,7 @@ header.header:hover {
 
 a.nav-item {
     font-size:larger;
-    font-weight: 600;
+    font-weight: 400;
     color: black;
     display: block;
     padding: 10% 0;
@@ -56,14 +56,13 @@ a.nav-item {
 }
 
 .nav-item:hover {
-    text-decoration-line: underline;
-    text-decoration-color: grey;
+    border-bottom: 2px solid rgba(0, 0, 255, 0.473);
 }
 
 .menu-button {
     font-size: 1.7rem;
     line-height: 2;
-    font-weight: 600;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: .15em;
     padding: 3em 0;
@@ -129,13 +128,22 @@ nav.landing {
 
 a.title {
     text-shadow: black 2px 0 10px;
-    transition-property:all;
+    transition-property: margin;
     transition-duration: 0.2s;
 }
  a.title:hover {
-    margin-left: 0.5rem;
+    padding-right: 0.5rem;
     margin-bottom: 0.3rem;
-    border-radius: 15%;
-    text-decoration-line: underline;
-    text-decoration-color: rgba(255,255,255,0.7);
+    border-bottom: 2px solid white;
+}
+
+span {
+    color: white;
+    padding-left: .25em;
+    transition-duration: .25s;
+    transition-property: padding;
+}
+
+a.title:hover span {
+    padding-left: .45em;
 }

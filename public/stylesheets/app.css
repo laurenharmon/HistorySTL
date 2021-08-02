@@ -2,51 +2,62 @@ body {
     font-family: 'Work Sans', sans-serif;
 }
 
+header {
+    border-left: 2px solid rgba(0, 0, 0, 0.068);
+}
+
+header:hover {
+    border-left: 2px solid black;
+}
+
 .navbar {
     height: 50px;
 }
 
 .main-page{
     min-height: calc(100vh - 50px);
-}
-
-.main-footer {
-    height: 50px;
-}
-
-.brand {
-    font-size: 1.5em;
-    color: black;
-    display: flex
-}
-
-
-a.navbar-item {
-    letter-spacing: .1em;
-    margin-right: 0.75em;
-}
-
-.navbar-end a.navbar-item:hover, p.brand-link:hover {
-    margin-top: .1em;
-    margin-left: .1em;
-    font-weight: 600;
-    background-color: transparent;
-}
-
-div.container ul li a:hover {
-    color: black;
-    font-weight: 600;
-    background-color: rgba(128, 128, 128, 0.582);
-    border-top-left-radius: 10%;
-    border-top-right-radius: 10%;
+    width: 90%;
 }
 
 .tile {
-    height:  85vh;
+    height:  95vh;
 }
+
 
 .tile.is-child {
     box-shadow: 2px 2px 2px 1px rgba(7, 11, 240, 0.548), -2px -2px 2px 1px rgba(7, 11, 240, 0.548);
+}
+
+div.circle {
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    padding-top: .65em;
+    background: #fff;
+    border: 3px solid #000;
+    color: #000;
+    text-align: center;
+    font: 2em Arial, sans-serif;
+}
+
+#index-title {
+    font-size: 3rem;
+    padding: 2rem 0;
+    letter-spacing: .12em;
+    text-align: center;
+}
+
+#index-card {
+    margin-bottom: 1rem;
+}
+
+#index-card:hover{
+    cursor: pointer;
+    box-shadow: 0 0.5em .75em -0.5em rgb(58, 58, 58), 0 0 0 1px rgb(58, 58, 58);
+}
+
+div.media-content .title, .subtitle {
+    text-align: right;
 }
 
 .card.sites-card {
@@ -91,6 +102,8 @@ span.arrow {
 
 
 .cards-list {
+    padding: 10px;
+    height: 99%;
     overflow: auto;
 }
 

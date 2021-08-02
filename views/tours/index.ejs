@@ -1,49 +1,30 @@
 <% layout("layouts/boilerplate")%>
 
-    <section class="container my-4">
-        <div class="tile is-ancestor">
-
-            <div class="tile is-parent list">
-                <article class="tile is-child notification odd">
-                    <div class="content has-text-white cards-list">
-                        <% for(let tour of tours) {%>
-                            <div class="card mb-3 mr-3">
-                              <div class="card-content mb-0">
-                                <div class="media">
-                                  <div class="media-content">
-                                    <p class="title is-4">
-                                      <%= tour.name %>
-                                    </p>
-                                    <p class="subtitle">
-                                      <%= tour.neighborhood %>
-                                    </p>
-                                  </div>
-                                  <div class="content">
-                                    <a class="button is-info button-event" value="<%= tour._id %>" href="/tours/<%= tour._id %>">See This Tour</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <% } %>
-                            <!-- <div class="card mb-3 mr-3">
-                                <div class="card-content mb-0">
-                                  <div class="media">
-                                    <div class="media-content">
-                                      <p class="title is-4">
-                                        All Sites
-                                      </p>
-                                      <p class="subtitle">
-                                        All Neighborhoods
-                                      </p>
-                                    </div>
-                                    <div class="content">
-                                      <a class="button is-info button-event" value="All" href="/tours/all">See All</a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div> -->
-                    </div>
-</article>
+  <section class="container my-4">
+    <div class="content">
+      <h1 id="index-title" style="text-align: center;">Available Tours</h1>
+    </div>
+    <div class="content cards-list">
+      <% for(let i=0; i < tours.length; i++) {%>
+        <div class="card" id="index-card">
+          <a value="<%= tours[i]._id %>" href="/tours/<%= tours[i]._id %>">
+            <div class="card-content mb-0">
+              <div class="media">
+                <div class="circle">
+                 <p><%= [i + 1] %></p>
+                </div>
+                <div class="media-content">
+                  <p class="title">
+                    <%= tours[i].name %>
+                  </p>
+                  <p class="subtitle">
+                    <%= tours[i].neighborhood %>
+                  </p>
+                </div>
+              </div>
             </div>
+          </a>
         </div>
-    </section>
+        <% } %>
+    </div>
+  </section>

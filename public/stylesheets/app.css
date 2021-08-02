@@ -1,3 +1,6 @@
+body {
+    font-family: 'Work Sans', sans-serif;
+}
 
 .navbar {
     height: 50px;
@@ -19,14 +22,15 @@
 
 
 a.navbar-item {
-    color: black;
+    letter-spacing: .1em;
+    margin-right: 0.75em;
 }
 
-a.navbar-item:hover {
-    color: white;
+.navbar-end a.navbar-item:hover, p.brand-link:hover {
+    margin-top: .1em;
+    margin-left: .1em;
     font-weight: 600;
-    background-color: rgba(128, 128, 128, 0.582);
-    border-radius: 25% 10%;
+    background-color: transparent;
 }
 
 div.container ul li a:hover {
@@ -38,12 +42,38 @@ div.container ul li a:hover {
 }
 
 .tile {
-    height:  80vh;
+    height:  85vh;
+}
+
+.tile.is-child {
+    box-shadow: 2px 2px 2px 1px rgba(7, 11, 240, 0.548), -2px -2px 2px 1px rgba(7, 11, 240, 0.548);
 }
 
 .card.sites-card {
     max-height: 35vh;
     overflow: auto;
+}
+
+.tour-btn {
+    background-color: rgba(255, 0, 0, 0.685);
+    color: white;
+}
+
+.tour-btn:hover {
+    color: white;
+    font-weight: 500;
+}
+
+span.arrow {
+    color: white;
+    padding-right: .25em;
+    display: block;
+    transition-duration: .25s;
+    transition-property: padding;
+}
+
+.tour-btn:hover span.arrow {
+    padding-right: .45em;
 }
 
 #selected:empty {

@@ -1,4 +1,5 @@
 body {
+    font-family: 'Work Sans';
     min-height: 100vh;
     margin: 0;
 }
@@ -9,25 +10,19 @@ section {
 }
 
 header.header {
+    cursor: pointer;
     height: 100vh;
-    width: 15%;
+    width: 10%;
     position: fixed;
     right: 0;
     z-index: 100;
+    transition-property: width;
+    transition-duration: 0.15s;
 }
 
-.show-hide {
-    z-index: 1;
-    height: 100%;
-    margin: auto;
-    overflow: hidden;
-    transition-property: height;
-    transition-duration: 0.75s;
-}
-
-.nav-body {
-    transform: translateX(100%);
-    transition-duration: 2s;
+header.header:hover {
+    background-color: white;
+    width: 15%;
 }
 
 .header-trigger {
@@ -41,14 +36,34 @@ header.header {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin-top: 15vh;
+    margin-top: 8vh;
     position: relative;
+    height: 150%;
+}
+
+.nav-target:hover {
+    padding: 0 50% 1000px;
+    cursor: pointer;
+}
+
+a.nav-item {
+    font-size:larger;
+    font-weight: 600;
+    color: black;
+    display: block;
+    padding: 10% 0;
+    margin-bottom: 2rem;
+}
+
+.nav-item:hover {
+    text-decoration-line: underline;
+    text-decoration-color: grey;
 }
 
 .menu-button {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     line-height: 2;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .15em;
     padding: 3em 0;
@@ -56,6 +71,10 @@ header.header {
     appearance: none;
     border: 0;
     box-shadow: none;
+}
+
+.menu-botton:hover {
+    cursor: pointer;
 }
 
 .dots {
@@ -79,22 +98,26 @@ nav.landing {
 
 
 .landing-wrapper {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1)),
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
     url("/images/arch-picture.jpg");
     background-size: cover;
     background-position-x: center;
     background-position-y: center;
     height: inherit;
-    width: 85%;
+    width: 90%;
 }
 
 .navbar-landing {
     position: absolute ;
     left: 8rem ;
-    padding-top: 6rem ;
+    padding-top: 10rem ;
     background-color: transparent;
     font-size: 3em;
     width: 100%;
+}
+
+.branding {
+    text-shadow: black 2px 0 10px;
 }
 
 .action-section {
@@ -102,4 +125,17 @@ nav.landing {
     width: 100%;
     bottom: 8rem;
     left: 8rem;
+}
+
+a.title {
+    text-shadow: black 2px 0 10px;
+    transition-property:all;
+    transition-duration: 0.2s;
+}
+ a.title:hover {
+    margin-left: 0.5rem;
+    margin-bottom: 0.3rem;
+    border-radius: 15%;
+    text-decoration-line: underline;
+    text-decoration-color: rgba(255,255,255,0.7);
 }

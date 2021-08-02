@@ -1,12 +1,21 @@
 body {
     font-family: 'Work Sans', sans-serif;
+    background-image: linear-gradient(rgba(22, 16, 16, 0.13), rgba(22, 16, 16, 0.377)),
+    url("/images/arch-picture.jpg");
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: center;
+    width: 90%;
+    height: 100vh;
+    margin-bottom: 0;
 }
 
-header {
+
+header.header {
     border-left: 2px solid rgba(0, 0, 0, 0.068);
 }
 
-header:hover {
+header.header.js-nav:hover {
     border-left: 2px solid black;
 }
 
@@ -14,10 +23,6 @@ header:hover {
     height: 50px;
 }
 
-.main-page{
-    min-height: calc(100vh - 50px);
-    width: 90%;
-}
 
 .tile {
     height:  95vh;
@@ -25,7 +30,7 @@ header:hover {
 
 
 .tile.is-child {
-    box-shadow: 2px 2px 2px 1px rgba(7, 11, 240, 0.548), -2px -2px 2px 1px rgba(7, 11, 240, 0.548);
+    box-shadow: 2px 2px 2px 1px rgba(7, 11, 240, 0.24), -2px -2px 2px 1px rgba(7, 11, 240, 0.24);
 }
 
 div.circle {
@@ -53,7 +58,7 @@ div.circle {
 
 #index-card:hover{
     cursor: pointer;
-    box-shadow: 0 0.5em .75em -0.5em rgb(58, 58, 58), 0 0 0 1px rgb(58, 58, 58);
+    box-shadow: 0 0.5em 0.75em -0.5em rgba(7, 11, 240, 0.24), 0 0 0 1px rgb(14, 13, 13);
 }
 
 div.media-content .title, .subtitle {
@@ -103,7 +108,7 @@ span.arrow {
 
 .cards-list {
     padding: 10px;
-    height: 99%;
+    height: 85vh;
     overflow: auto;
 }
 

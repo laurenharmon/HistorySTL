@@ -1,46 +1,49 @@
 <% layout("layouts/boilerplate")%>
 
-    <section class="container my-4">
-        <div class="tile is-ancestor">
+    <section class="container my-0 pt-4">
+        <div class="content">
+            <div class="tile is-ancestor">
 
-            <div class="tile is-parent" id="map-tile">
-                <div class="tile is-child notification map">
-                    <div id="map"></div>
+                <div class="tile is-parent" id="map-tile">
+                    <div class="tile is-child notification map">
+                        <div id="map"></div>
+                    </div>
+                </div>
+
+                <div class="tile is-parent" id="details">
+                    <article class="tile is-child notification">
+                        <div class="content">
+                            <div class="card sites-card">
+                                <header class="card-header">
+                                    <div class="card-header-title">
+                                        <h1>
+                                            <%= tour.name %>
+                                        </h1>
+                                    </div>
+                                    <a href="/tours"
+                                        class="button is-pulled-right is-align-self-center mr-2 tour-btn"><span
+                                            class="arrow">&#8678;</span>Back To
+                                        Tours</a>
+                                </header>
+                                <div class="card-content">
+
+                                    <% for(let i=0; i < sites.length; i++) {%>
+                                        <div class="content">
+                                            <p>
+                                                <%= i + 1 %>. <a href="/sites/<%=sites[i]._id%>">
+                                                        <%= sites[i].name %>
+                                                    </a>
+
+                                            </p>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                            <div id="selected"></div>
+                        </div>
+                    </article>
                 </div>
             </div>
-
-            <div class="tile is-parent" id="details">
-                <article class="tile is-child notification odd">
-                    <div class="content">
-                        <div class="card sites-card">
-                            <header class="card-header">
-                                <div class="card-header-title">
-                                    <h1>
-                                        <%= tour.name %>
-                                    </h1>
-                                </div>
-                                <a href="/tours" class="button is-pulled-right is-align-self-center mr-2 tour-btn"><span class="arrow">&#8678;</span>Back To
-                                    Tours</a>
-                            </header>
-                            <div class="card-content">
-
-                                <% for(let i=0; i < sites.length; i++) {%>
-                                    <div class="content">
-                                        <p>
-                                            <%= i + 1 %>. <a href="/sites/<%=sites[i]._id%>">
-                                                    <%= sites[i].name %>
-                                                </a>
-
-                                        </p>
-                                    </div>
-                                    <% } %>
-                            </div>
-                        </div>
-                        <div id="selected"></div>
-                    </div>
-                </article>
-            </div>
-
         </div>
     </section>
     <!--  -->

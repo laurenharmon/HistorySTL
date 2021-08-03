@@ -46,19 +46,22 @@ div.circle {
 }
 
 #index-title {
+    color: white;
     font-size: 3rem;
-    padding: 2rem 0;
+    padding: 4rem 0 0 2rem;
     letter-spacing: .12em;
     text-align: center;
 }
 
 #index-card {
     margin-bottom: 1rem;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
 }
 
 #index-card:hover{
     cursor: pointer;
-    box-shadow: 0 0.5em 0.75em -0.5em rgba(7, 11, 240, 0.24), 0 0 0 1px rgb(14, 13, 13);
+    box-shadow: 0 0.5em 1em -0.5em white, 0 0 0 2px white;
 }
 
 div.media-content .title, .subtitle {
@@ -66,7 +69,8 @@ div.media-content .title, .subtitle {
 }
 
 .card.sites-card {
-    max-height: 35vh;
+    min-height: 25vh;
+    max-height: 45vh;
     overflow: auto;
 }
 
@@ -98,18 +102,49 @@ span.arrow {
 
 #selected {
     margin-top: 1em !important;
+    height: 60vh;
+}
+
+div.history-card {
+    height: 40vh;
 }
 
 .facts {
-    height: 30vh;
-    overflow: auto;
+    width: 100%;
+    text-align: center;
 }
-
 
 .cards-list {
     padding: 10px;
     height: 85vh;
     overflow: auto;
+}
+
+div.card-content.history {
+    height: 30vh;
+    width: 70vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.tabs.history-tabs {
+    color: black;
+    border-bottom: none;
+    width: 100%;
+}
+
+div.tabContent { 
+    height: auto;
+    overflow: auto;
+    padding: 0.5em; 
+    margin-bottom: .5em;
+    display: block;
+    width: 100%
+}
+
+div.tabContent#year, div.tabContent#filler {
+    display: none;
 }
 
 @media screen and (max-width: 930px) {
